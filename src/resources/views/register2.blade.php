@@ -13,13 +13,28 @@
 @csrf
     <div>
         <p>現在の体重</p>
-        <input type="number" name="current" placeholder="現在の体重を入力" value="" />
+        <input type="number" name="weight" placeholder="現在の体重を入力" value="" />
         <span>kg</span>
+        @if ($errors->has('weight'))
+            @foreach ($errors->all() as $error)
+                <li>{{$error->get('weight')}}</li>
+            @endforeachr
+        @endif
     </div>
     <div>
         <p>目標の体重</p>
-        <input type="number" name="goal" placeholder="目標の体重を入力" value="" />
+        <input type="number" name="target_weight" placeholder="目標の体重を入力" value="" />
         <span>kg</span>
+        @if ($errors->has('target_weight'))
+            @foreach ($errors->all() as $error)
+                <li>{{$error->get('target_weight')}}</li>
+            @endforeachr
+        @endif
+    </div>
+    <div>
+        <input type="hidden"  name="name" value="{{ $contact['name'] }}" />
+        <input type="hidden"  name="email" value="{{ $contact['email'] }}" />
+        <input type="hidden"  name="password" value="{{ $contact['password'] }}" />
     </div>
     <div> 
         <input  type="submit" value="アカウント作成">
